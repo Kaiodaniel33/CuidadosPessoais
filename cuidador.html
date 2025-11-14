@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidados Pessoais | Bem-Estar e Saúde Domiciliar em Campo Mourão</title>
+    
+    <link rel="icon" href="image.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* =================================
+           CSS (O DESIGN PROFISSIONAL)
+           ================================= */
+        
+        /* Paleta de Cores */
+        :root {
+            --primary-color: #006699;
+            --secondary-color: #A8DADC;
+            --background-light: #F7F7F7;
+            --accent-color: #FFC300;
+            --text-dark: #333;
+            --text-light: #555;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+        }
+        
+        html {
+            scroll-behavior: smooth; /* Rolagem suave global */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 0; /* Um pouco menos de padding para acomodar o logo */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Logo da Empresa */
+        .logo-container a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo {
+            height: 60px; /* Altura do logo */
+            width: auto;
+            margin-right: 15px;
+            border-radius: 8px; /* O logo tem cantos arredondados */
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Navegação Desktop */
+        .desktop-nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .desktop-nav ul li {
+            margin-left: 30px;
+        }
+
+        .desktop-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .desktop-nav ul li a:hover,
+        .desktop-nav ul li a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        /* Menu Hambúrguer (Ícone) */
+        .hamburger-menu {
+            display: none; /* Escondido no desktop */
+            font-size: 1.8em;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Navegação Mobile (Menu Lateral) */
+        .mobile-nav {
+            display: none; /* Escondido por padrão, ativado pelo JS E CSS */
+            position: fixed;
+            top: 0;
+            right: -100%; /* Começa fora da tela */
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--primary-color);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.4s ease-in-out;
+            padding: 40px 20px;
+        }
+        
+        .mobile-nav.active {
+            right: 0; /* Entra na tela */
+        }
+        
+        .mobile-nav .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav ul {
+            list-style: none; /* Garante que a lista não tenha marcadores */
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 40px;
+        }
+        
+        .mobile-nav ul li {
+            margin: 15px 0;
+            width: 100%;
+        }
+        
+        .mobile-nav ul li a {
+            color: white; /* Garante a cor do link */
+            text-decoration: none; /* Garante que não tenha sublinhado */
+            font-family: 'Montserrat', sans-serif; /* Garante a fonte */
+            font-size: 1.3em;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .mobile-nav ul li a i {
+            width: 25px;
+            text-align: center;
+            color: var(--accent-color);
+        }
+        
+        /* Fundo escuro quando o menu está aberto */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Banner Principal (Home) */
+        #home {
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color) 70%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        #home .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        #home h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        #home p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e6b300;
+            transform: translateY(-3px);
+        }
+
+        /* Seções Gerais */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section:nth-of-type(even) {
+            background-color: white;
+        }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Quem Somos */
+        #quemsomos .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            text-align: left;
+        }
+
+        #quemsomos .text-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        #quemsomos .image-content {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        #quemsomos .image-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        #quemsomos h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #quemsomos h3 i {
+            color: var(--accent-color);
+            font-size: 1.2em;
+        }
+
+        #quemsomos ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #quemsomos ul li {
+            background-color: white;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-weight: 600;
+        }
+
+        #quemsomos ul li i {
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+        
+        #quemsomos strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Nossos Serviços */
+        #servicos .service-category {
+            margin-bottom: 60px;
+        }
+        
+        #servicos h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #servicos h3 i {
+            color: var(--accent-color);
+            font-size: 1.1em;
+        }
+
+        #servicos .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        #servicos .service-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        #servicos .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        #servicos .service-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        #servicos .service-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Depoimentos */
+        #depoimentos {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        #depoimentos .intro-text {
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        #depoimentos .depoimento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .depoimento-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: left;
+            position: relative;
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        .depoimento-card i.quote-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2.5em;
+            color: rgba(0,0,0,0.08);
+        }
+
+        .depoimento-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .depoimento-card .author {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Contato */
+        #contato .contact-content {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        #contato .contact-info,
+        #contato .contact-form {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        #contato h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #contato h3 i {
+            color: var(--accent-color);
+            font-size: 1.2em;
+        }
+        
+        #contato .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+        }
+
+        #contato .contact-info p a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        #contato .contact-info p a:hover {
+            color: var(--primary-color);
+        }
+
+        #contato .contact-info p i {
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        #contato form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        #contato form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        #contato form input[type="text"],
+        #contato form input[type="tel"],
+        #contato form input[type="email"],
+        #contato form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        #contato form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #contato form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #contato form button:hover {
+            background-color: #004d73;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+        .footer-credit {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+        
+        /* Botão Voltar ao Topo */
+        #scrollTopButton {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        #scrollTopButton.visible {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #scrollTopButton:hover {
+            background-color: #004d73;
+        }
+
+        /* =================================
+           RESPONSIVIDADE (TABLET E CELULAR)
+           ================================= */
+        
+        /* Tablet (Médio) - ATIVA O MENU HAMBÚRGUER */
+        @media (max-width: 1024px) {
+            
+            .desktop-nav {
+                display: none; /* Esconde menu de computador */
+            }
+            .hamburger-menu {
+                display: block; /* Mostra ícone hambúrguer */
+            }
+            .mobile-nav {
+                display: block; /* Permite que o menu lateral funcione */
+            }
+            
+            #home h1 {
+                font-size: 3em;
+            }
+            
+            #quemsomos .content-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            #quemsomos .text-content,
+            #quemsomos .image-content {
+                min-width: unset;
+                width: 100%;
+                max-width: 500px; /* Evita que a imagem fique gigante */
+            }
+            
+            #servicos .service-grid {
+                /* Força 2 colunas no tablet */
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #contato .contact-content {
+                flex-direction: column;
+                gap: 50px;
+            }
+            #contato .contact-info,
+            #contato .contact-form {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+        
+        /* Celular (Pequeno) */
+        @media (max-width: 768px) {
+            header .container {
+                flex-wrap: nowrap; /* Impede que o logo quebre linha */
+            }
+
+            #home {
+                padding: 80px 20px;
+                min-height: 50vh;
+            }
+            #home h1 {
+                font-size: 2.5em;
+            }
+            #home p {
+                font-size: 1em;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+
+            #servicos .service-grid,
+            #depoimentos .depoimento-grid {
+                /* Força 1 coluna no celular */
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Celular (Muito Pequeno) */
+        @media (max-width: 480px) {
+            .logo {
+                height: 45px; /* Diminui o logo */
+            }
+            header h1 {
+                font-size: 1.4em; /* Diminui o nome da empresa */
+            }
+        
+            #home h1 {
+                font-size: 2em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="#home">
+                    <img src="image.png" alt="Cuidados Pessoais - Bem-Estar Logo" class="logo">
+                    <h1>Cuidados Pessoais</h1>
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#quemsomos">Quem Somos</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="hamburger-menu" id="hamburger-icon" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <nav class="mobile-nav" id="mobile-menu">
+        <button class="close-menu" id="close-icon" aria-label="Fechar menu">&times;</button>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#quemsomos"><i class="fas fa-user-tie"></i> Quem Somos</a></li>
+            <li><a href="#servicos"><i class="fas fa-briefcase-medical"></i> Serviços</a></li>
+            <li><a href="#depoimentos"><i class="fas fa-comments"></i> Depoimentos</a></li>
+            <li><a href="#contato"><i class="fas fa-phone-alt"></i> Contato</a></li>
+        </ul>
+    </nav>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <section id="home">
+        <div class="banner-content container">
+            <h1>Cuidado Domiciliar com Segurança e Carinho.</h1>
+            <p>Nossa equipe une a segurança técnica da enfermagem ao cuidado humanizado que sua família merece. Tranquilidade para você, bem-estar para quem você ama em Campo Mourão e Região.</p>
+            <a href="https://wa.me/5544998134851?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cuidados%20Pessoais%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" class="cta-button">
+                <i class="fab fa-whatsapp"></i> Agende sua Avaliação Gratuita!
+            </a>
+        </div>
+    </section>
+
+    <section id="quemsomos" class="section">
+        <div class="container">
+            <h2>💖 Sobre a Cuidados Pessoais</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h3><i class="fas fa-heartbeat"></i> Nossa Filosofia: Cuidado e Carinho</h3>
+                    <p>A **Cuidados Pessoais** nasceu da missão de oferecer um serviço de saúde domiciliar que vai além do técnico: é um cuidado feito <strong>com amor e carinho</strong>. Entendemos que delegar a saúde de um familiar é um ato de confiança profunda, e é por isso que nossa equipe se dedica a cada paciente como se fosse da nossa própria família.</p>
+
+                    <h3><i class="fas fa-shield-alt"></i> Nosso Diferencial: Qualificação Técnica</h3>
+                    <p>Nosso maior diferencial é a <strong>segurança</strong>. Contamos com o profissional **Daniel de Oliveira da Costa**, que possui a dupla qualificação de:</p>
+                    <ul>
+                        <li><i class="fas fa-user-nurse"></i> <strong>🎓 Cuidador Certificado:</strong> Dedicação total às necessidades básicas, rotina, higiene, conforto e companhia afetiva.</li>
+                        <li><i class="fas fa-stethoscope"></i> <strong>🩺 Técnico de Enfermagem:</strong> Capacidade para realizar procedimentos técnicos com precisão e segurança, garantindo a supervisão correta da saúde do paciente.</li>
+                    </ul>
+                    <p><strong>O resultado?</strong> Uma assistência completa que proporciona bem-estar físico e emocional, com a certeza de que qualquer intercorrência será tratada com o conhecimento técnico necessário.</p>
+                </div>
+                <div class="image-content">
+                    
+                    <img src="https://via.placeholder.com/400x500?text=Foto+Profissional+Daniel" alt="Daniel de Oliveira Costa - Técnico de Enfermagem da Cuidados Pessoais">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="section">
+        <div class="container">
+            <h2>💙 NOSSOS SERVIÇOS: Saúde Domiciliar Completa</h2>
+
+            <div class="service-category">
+                <h3><i class="fas fa-hand-holding-medical"></i> Cuidados Humanizados e de Rotina</h3>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <i class="fas fa-user-friends"></i>
+                        <h4>Acompanhamento e Companhia</h4>
+                        <p>Prevenção da solidão e depressão, incentivando atividades cognitivas e sociais para um dia a dia mais feliz.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-bath"></i>
+                        <h4>Higiene e Conforto</h4>
+                        <p>Auxílio em banhos, troca de vestimentas, mobilidade e posicionamento no leito para prevenção de lesões e bem-estar.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h4>Gerenciamento da Rotina</h4>
+                        <p>Preparo e auxílio nas refeições, organização do ambiente e acompanhamento em consultas médicas.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-pills"></i>
+                        <h4>Administração de Medicamentos</h4>
+                        <p>Organização de horários e administração de forma segura e pontual para total eficácia do tratamento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3><i class="fas fa-syringe"></i> Cuidados Técnicos de Enfermagem</h3>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <i class="fas fa-bandage"></i>
+                        <h4>Tratamento de Feridas e Curativos</h4>
+                        <p>Avaliação, limpeza e troca de curativos simples e complexos (escaras, úlceras por pressão, feridas cirúrgicas) no conforto do lar.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Controle de Sinais Vitais</h4>
+                        <p>Monitoramento constante de Pressão Arterial, Glicemia, Temperatura e Pulso para acompanhamento preciso da saúde.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-vial"></i>
+                        <h4>Apoio a Dispositivos</h4>
+                        <p>Cuidados especializados com sondas (nasogástricas, vesicais), drenos e bolsas de colostomia.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-injection"></i>
+                        <h4>Administração de Injetáveis</h4>
+                        <p>Aplicação de medicamentos injetáveis (IM, SC) conforme prescrição médica, com técnica asséptica e segura.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="section">
+        <div class="container">
+            <h2>🗣️ O que dizem sobre nossos serviços</h2>
+            <p class="intro-text">"A satisfação de nossos clientes e o sorriso de seus familiares são a nossa maior recompensa. Nada é mais poderoso do que a experiência de quem já recebeu nossos cuidados."</p>
+
+            <div class="depoimento-grid">
+                <div class="depoimento-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Contratei a Cuidados Pessoais e fomos atendidos pelo Daniel. A segurança de saber que ele tem a formação de Técnico de Enfermagem é essencial para nós, pois ele controla a glicemia e administra as medicações injetáveis com total precisão. Além disso, a paciência e o carinho dele são inestimáveis."</p>
+                    <span class="author">Por Ana Paula S. (Esposa do Sr. Ricardo)</span>
+                </div>
+
+                <div class="depoimento-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Minha mãe precisou de cuidados complexos após uma cirurgia. O Daniel, da Cuidados Pessoais, uniu o melhor dos dois mundos: ele faz a troca do curativo com técnica impecável e ainda oferece o suporte emocional necessário. Um serviço excelente, feito com amor, que acelerou a recuperação dela."</p>
+                    <span class="author">Por Família Oliveira (Filho da Dona Cleusa)</span>
+                </div>
+
+                <div class="depoimento-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"A Vó Maria é acamada e precisava de um cuidado muito atencioso. O Daniel é extremamente dedicado na mobilidade e higiene. Saber que um Técnico da Cuidados Pessoais a está acompanhando, checando os sinais vitais diariamente, nos deu uma paz de espírito que não tem preço. Recomendamos!"</p>
+                    <span class="author">Por Pedro H. C. (Neto da Vó Maria)</span>
+                </div>
+                
+                <div class="depoimento-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Eu precisava de um profissional confiável para levar meu pai às consultas. O Daniel, da Cuidados Pessoais, é pontual, super responsável, e o principal: ele sabe como agir em qualquer intercorrência no caminho, graças à sua qualificação dupla. Muito mais que um acompanhante."</p>
+                    <span class="author">Por Dra. Roberta Lins (Cliente Particular)</span>
+                </div>
+
+                <div class="depoimento-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Indiquei a Cuidados Pessoais para minha vizinha. O Daniel trouxe uma rotina tão carinhosa e organizada que a saúde do marido dela melhorou visivelmente. A expertise de Técnico garante que não haja erros, e a atitude de Cuidador torna o dia a dia mais leve. Excelente empresa!"</p>
+                    <span class="author">Por Vanessa P. S. (Vizinha de Cliente)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <div class="container">
+            <h2>📞 Fale Conosco</h2>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3><i class="fas fa-map-marker-alt"></i> Atendimento em Campo Mourão e Região</h3>
+                    <p>Estamos prontos para levar o cuidado de excelência até a sua casa. Fale com nossa equipe e solicite uma avaliação sem compromisso.</p>
+                    <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/5544998134851?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cuidados%20Pessoais%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank">44 99813-4851</a></p>
+                    <p><i class="fas fa-phone-alt"></i> <strong>Telefone:</strong> 44 99813-4851</p>
+                    <p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> <a href="mailto:danieloliveira1987cm@gmail.com">danieloliveira1987cm@gmail.com</a></p>
+                </div>
+
+                <div class="contact-form">
+                    <h3><i class="fas fa-comment-dots"></i> Solicite um Orçamento Rápido</h3>
+                    <p><em>*Preencha os campos abaixo e clique em enviar para falar direto pelo WhatsApp!</em></p>
+
+                    <form id="whatsapp-form" onsubmit="sendToWhatsApp(event)">
+                        <label for="nome">Seu Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+
+                        <label for="telefone">Seu Telefone (Com DDD):</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                        
+                        <label for="servico">Qual Serviço Você Precisa?</label>
+                        <input type="text" id="servico" name="servico" placeholder="Ex: Curativos, Acompanhamento...">
+
+                        <label for="mensagem">Mensagem Adicional:</label>
+                        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+                        <button type="submit" class="cta-button" style="background-color: var(--primary-color); color: white; width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Enviar Mensagem via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cuidados Pessoais - Bem-Estar. Todos os direitos reservados. | Atendendo Campo Mourão e Região.</p>
+            <p class="footer-credit">Feito por Kaio Daniel S. Costa</p>
+        </div>
+    </footer>
+    
+    <button id="scrollTopButton" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        
+        // --- Função 1: Enviar Formulário para WhatsApp ---
+        function sendToWhatsApp(event) {
+            event.preventDefault(); // Impede o envio padrão
+            const numeroWhatsApp = '5544998134851';
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const servico = document.getElementById('servico').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            // Mensagem formatada (identificando a empresa)
+            let textoMensagem = 'Assunto: Contato pelo Site (Cuidados Pessoais)\n\n';
+            textoMensagem += `Nome: ${nome}\n`;
+            textoMensagem += `Telefone: ${telefone}\n`;
+            
+            if (servico.trim() !== '') {
+                textoMensagem += `Serviço de Interesse: ${servico}\n\n`;
+            } else {
+                textoMensagem += `\n`;
+            }
+
+            if (mensagem.trim() !== '') {
+                textoMensagem += `Mensagem:\n${mensagem}`;
+            }
+
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // --- Função 2: Lógica do Menu Hambúrguer ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const menuLinks = document.querySelectorAll('.mobile-nav ul li a');
+
+            // Função para abrir o menu
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Impede rolar a página
+            }
+
+            // Função para fechar o menu
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Libera a rolagem
+            }
+
+            // Eventos de clique
+            hamburgerIcon.addEventListener('click', openMenu);
+            closeIcon.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Fechar o menu ao clicar em um link (para navegação na mesma página)
+            menuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        });
+        
+        // --- Função 3: Lógica do Botão "Voltar ao Topo" ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollTopButton = document.getElementById('scrollTopButton');
+
+            // Mostrar/Esconder o botão
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            };
+
+            // Ação de clique para rolar ao topo
+            scrollTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+    </script>
+
+</body>
+</html>
